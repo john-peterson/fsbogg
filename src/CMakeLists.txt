@@ -29,6 +29,14 @@ target_link_libraries(extractor
   ${Boost_FILESYSTEM_LIBRARY}
   ${Boost_SYSTEM_LIBRARY})
 
+add_executable(rebuild
+  fsb/rebuild.cpp)
+target_link_libraries(rebuild
+  fsb
+  ${GLog_LIBRARIES}
+  ${Boost_FILESYSTEM_LIBRARY}
+  ${Boost_SYSTEM_LIBRARY})
+
 add_executable(headers_generator_tool
   fsb/vorbis/headers_generator_tool.cpp)
 target_link_libraries(headers_generator_tool

@@ -159,7 +159,7 @@ sample container::read_sample_header(io::buffer_view & view) {
         view.skip(extra_length);
         break;
       default:
-        CHECK(false) << "Unexpected extra header type: " << type;
+        CHECK(true) << "Unexpected extra header type: " << type;
         view.skip(extra_length);
     }
   }
@@ -185,7 +185,7 @@ void container::read_sample_names(std::istream & stream) {
 }
 
 
-void container::extract_sample(const sample & sample, std::ostream & stream) {
+void container::extract_sample(const sample & sample, std::ostream & output) {
   CHECK(header_.mode == format::vorbis);
   
   // Construct sample data view to verify that we don't exceed sample boundaries 
@@ -196,7 +196,7 @@ void container::extract_sample(const sample & sample, std::ostream & stream) {
   const char * const sample_end = sample_begin + sample.size;
   io::buffer_view sample_view(sample_begin, sample_end);
   vorbis::rebuilder rebuilder;
-  rebuilder.rebuild(sample, sample_view, stream);
+  rebuilder.rebuild(sample, sample_view, output);
 }
 
 }

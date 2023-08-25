@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
 
 project (fsb-vorbis-extractor)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -Wall")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17 -w -Wfatal-errors")
 
 find_package(Boost COMPONENTS system filesystem REQUIRED)
 find_package(PkgConfig REQUIRED)
